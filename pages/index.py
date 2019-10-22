@@ -29,17 +29,15 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
         
-            ## Value Proposition
+            ## The Perfect Playlist   
 
-            Emphasize how the app will benefit users. Don't emphasize the underlying technology.
+            By emphasizing the most definitive features of a track in Spotify's massive collection of playlists, we can learn what makes a Spotify playlist stand out.   
 
-            ✅ RUN is a running app that adapts to your fitness levels and designs personalized workouts to help you improve your running.
-
-            ❌ RUN is the only intelligent running app that uses sophisticated deep neural net machine learning to make your run smarter because we believe in ML driven workouts.
+            Is it the steady electronic beat, the melody line, the overall loudness, or the clear vocals that keep us listening?     
 
             """
         ),
-        dcc.Link(dbc.Button('Call To Action', color='primary'), href='/predictions')
+        dcc.Link(dbc.Button('Make a Prediction', color='success'), href='/predictions')
     ],
     md=4,
 )

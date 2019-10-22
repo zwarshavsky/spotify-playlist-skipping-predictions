@@ -26,7 +26,7 @@ sticky (string, optional): Stick the navbar to the top or the bottom of the view
 """
 
 navbar = dbc.NavbarSimple(
-    brand='YOUR APP NAME',
+    brand='Machine Learning for Spotify Playlist Predictions',
     brand_href='/', 
     children=[
         dbc.NavItem(dcc.Link('Predictions', href='/predictions', className='nav-link')), 
@@ -34,9 +34,9 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dcc.Link('Process', href='/process', className='nav-link')), 
     ],
     sticky='top',
-    color='light', 
-    light=True, 
-    dark=False
+    color='#2FBF62', 
+    light=False, 
+    dark=True
 )
 
 footer = dbc.Container(
@@ -44,11 +44,11 @@ footer = dbc.Container(
         dbc.Col(
             html.P(
                 [
-                    html.Span('Your Name', className='mr-2'), 
-                    html.A(html.I(className='fas fa-envelope-square mr-1'), href='mailto:<you>@<provider>.com'), 
-                    html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/<you>/<repo>'), 
-                    html.A(html.I(className='fab fa-linkedin mr-1'), href='https://www.linkedin.com/in/<you>/'), 
-                    html.A(html.I(className='fab fa-twitter-square mr-1'), href='https://twitter.com/<you>'), 
+                    html.Span('Zhenya Warshavsky', className='mr-2'), 
+                    html.A(html.I(className='fas fa-envelope-square mr-1'), href='mailto:zwarshavsky@gmail.com'), 
+                    html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/zwarshavsky'), 
+                    html.A(html.I(className='fab fa-linkedin mr-1'), href='https://www.linkedin.com/in/zwarshavsky/'), 
+                    # html.A(html.I(className='fab fa-twitter-square mr-1'), href='https://twitter.com/<you>'), 
                 ], 
                 className='lead'
             )
@@ -68,8 +68,11 @@ app.layout = html.Div([
     footer
 ])
 
-@app.callback(Output('page-content', 'children'),
-              [Input('url', 'pathname')])
+@app.callback(
+    Output('page-content', 'children'),
+              [Input('url', 'pathname')]
+              )
+
 def display_page(pathname):
     if pathname == '/':
         return index.layout
@@ -81,6 +84,34 @@ def display_page(pathname):
         return process.layout
     else:
         return dcc.Markdown('## Page not found')
+
+# Prediction Page Interactions
+@app.callback(
+    Output('output-message', 'children'),
+               [Input('year-drop','value'), 
+               Input('slider-2', 'value'),
+               Input('slider-3', 'value'),
+               Input('slider-4', 'value'),
+               Input('slider-5', 'value'),
+               Input('slider-6', 'value'),
+               Input('slider-7', 'value'),
+               Input('slider-8', 'value'),
+               Input('slider-9', 'value'),
+               Input('slider-10', 'value'),
+               Input('slider-11', 'value'),
+               Input('slider-12', 'value'),
+               Input('slider-13', 'value'),
+               Input('slider-14', 'value'),
+               Input('slider-15', 'value'),
+               Input('slider-16', 'value'),
+               Input('slider-17', 'value'),
+               Input('model','value'),
+               ]) 
+
+def display_results(value0,value1,value2,value3,value4,value5,value6,value7,value8,value9,value10,value11,value12,value13,value14,value15,value16,value17):
+    return f'Testing use of drop-down interaction: {value0,value1,value2,value3,value4,value5,value6,value7,value8,value9,value10,value11,value12,value13,value14,value15,value16,value17}'
+   
+    
 
 if __name__ == '__main__':
     app.run_server(debug=True)
