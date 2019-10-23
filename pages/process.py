@@ -10,7 +10,7 @@ from app import app
 column1 = dbc.Col(
     [
        dcc.Markdown('''
-## Future Features (or how I learned to love Permutation Importances) 
+## Back from the Feature 
 ***
 ***
 
@@ -34,27 +34,28 @@ The following hierarchical cluster graph reveals relationships between the featu
 
 ![Hierarchical Clustering Analysis](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/deandro_plot.png "Title")
 
-In red connecting line reveal 3 key features as possible contenders for our prediction target. 
+Red connecting lines reveal 3 key features as possible contenders for our prediction target. 
 ***
 
 #### Target Selection
 
 Of the 3 binary classification targets, I ultimately chose "Skip-2" which is evenly split. 
 
-![Hierarchical Clustering Analysis](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/blob/master/assets/classification_distribution.png "Title")
+![Hierarchical Clustering Analysis](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/classification_distribution.png "Title")
 
-Official "Skip-2" definition: "Boolean indicating if the track was only played briefly"
+Spotify's "Skip-2" definition: "Boolean indicating if the track was only played briefly"
+
 **Goal:** to predict whether a user will briefly play a track within a playlist or if they will play the track in full.    
 
 
 #### Feature Leaking
-
+***
 Feature leaking identification and detection can be a tedious process requiring trial and error, domain knowledge, and ultimately, a generalized robust Machine Learning model that has been cross-validated.
 
 
 
 
-![Hierarchical Clustering Analysis](https://github.com/zwarshavsky/spotify-playlist-skipping-predictions/blob/master/assets/Feature_Importances.png "Title")
+![Hierarchical Clustering Analysis](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Feature_Importances.png "Title")
 
 
 
