@@ -62,11 +62,11 @@ An incredible improvement! 20% higher validation accuracy than the mean baseline
 
 Let's examine the highest performing features:
 ***
-hist_user_behavior_reason_start - E.g. _fwdbtn_ - the user action which led to the current track being played 
-hour_of_day - hour of the day playlist / track was played
-session_position - position of track within the playlist
-session_length - number of total rows in the session
-context_type - playlist type 
+* hist_user_behavior_reason_start - E.g. _fwdbtn_ - the user action which led to the current track being played 
+* hour_of_day - hour of the day playlist / track was played
+* session_position - position of track within the playlist
+* session_length - number of total rows in the session
+* context_type - playlist type 
 ***
 What is one important question you can ask to cross-check your thinking around feature selection?
 
@@ -74,7 +74,22 @@ What is one important question you can ask to cross-check your thinking around f
 
 Our Guidelines: 
 
-* Our goal is to predict whether a track will be played briefly or in full  
+* Our goal is to predict whether a track will be played briefly or in full
+* Spotify playlist recommendation engine does not have the capability to adapt to the user's behavior during playlist playback
+* Any information extracted about the track during or after playback should be considered off limits for our prediction model
+
+Conclusion:
+
+* The highest performing features were extracted during or after playback
+* These features should be dropped from the dataset 
+
+
+### Realistic Model
+
+Our model now consists **ONLY** of track attributes outside of any user behavior. Ultimately, this is an unrealistic model for real-life prediction, but having removed, all of these variables, 
+our metrics appear much more realistic and generalized:
+
+![Scores](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Score_2.png "Title")
 
 
 
@@ -90,12 +105,10 @@ Our Guidelines:
 
 
 
-Markdown is a simple way to write and format text.
-It includes a syntax for things like **bold text** and *italics*,
-[links](http://commonmark.org/help), inline `code` snippets, lists,
-quotes, and more.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+
+
 
 '''
 
