@@ -24,7 +24,7 @@ column1 = dbc.Col(
         html.H6('Year of Release'),
         dcc.Dropdown(
             id='year-drop',
-            value=5,
+            value=1960,
             options=[{'label': i, 'value' : i} for i in [i for i in range(1960,2019)]],  
         ),
         html.Br(),
@@ -33,6 +33,7 @@ column1 = dbc.Col(
             id='slider-2',
             min=90,
             max=100,
+            value= 45,
             step=.1,
 #             marks={i:str(i) for i in range(90,101)},
             
@@ -44,6 +45,7 @@ column1 = dbc.Col(
             min=.01,
             max=1,
             step=.01,
+            value = .5,
 #             marks={i:str(i) for i in range(1,11)},
             
         ),
@@ -152,7 +154,7 @@ column1 = dbc.Col(
         html.H6('Speechiness'),
         dcc.Slider(
             id='slider-14',
-            min=0.01,
+            min=0.1,
             max=1,
             step=0.01,
 #             marks={i:str(i) for i in range(1,9)},
@@ -205,17 +207,17 @@ column1 = dbc.Col(
     md=4,
 )
 
-
+matplotlib_figure = plt.figure()
+x = [10,  8, 13,  9, 11, 14,  6,  4, 12,  7,  5]
+y = [ 8,  6,  7,  8,  8,  9,  7,  4, 10,  4,  5]
+plt.scatter(x, y)
+plotly_figure = mpl_to_plotly(matplotlib_figure)
 
 
 column2 = dbc.Col(
     [
-#         matplotlib_figure = plt.figure()
-# x = [10,  8, 13,  9, 11, 14,  6,  4, 12,  7,  5]
-# y = [ 8,  6,  7,  8,  8,  9,  7,  4, 10,  4,  5]
-# plt.scatter(x, y)
-# plotly_figure = mpl_to_plotly(matplotlib_figure)
-# layout = dcc.Graph(id='my-graph-name', figure=plotly_figure)
+       
+dcc.Graph(id='my-graph-name', figure=plotly_figure)
         
     ]
 )
