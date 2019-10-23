@@ -16,9 +16,7 @@ column1 = dbc.Col(
 
 As a DJ, sound system nerd, and musician I've spent more 
 time arguing, postulating, and sharing unqualified opinions about my favorite (and least favorite)
-music than I can quantify. 
-
-And a lot of these heated discussions centered around what qualities in the music carry greater weight for 
+music than I can quantify. And a lot of these heated discussions centered around what qualities in the music carry greater weight for 
 society's universal preferences. 
 
 To answer some of these age-old questions, I've turned to applying several popular machine learning techniques to predict listening behavior around the modern version of the LP: **The Playlist**.  
@@ -26,15 +24,20 @@ To answer some of these age-old questions, I've turned to applying several popul
 Resources for Spotify's [Sequential Skip Prediction Challenge](https://www.aicrowd.com/challenges/spotify-sequential-skip-prediction-challenge/dataset_files) contains 350 GBs of playlist 
 user interaction data recorded between July 2018 and September 2018 and an additional track list with feature attributes for 1.8 million songs.
 
-My sample is from July 15 2018. After cross-referencing with the features list, I was left with a total of 1.5 million rows and 50 features.
+My sample is from July 15, 2018. After cross-referencing with the features list, I was left with a total of 1.5 million rows and 50 features.
 ***
 
 ### Feature Selection Process 
 
 
-After cleaning up my data, I ran a nice visualization to understand initially how these features interacted with each other:
+The following hierarchical cluster graph reveals relationships between the features. 
 
-![Hierarchical Clustering Analysis]("/Users/user/Documents/GitHub/MIR/Spotify/spotify-playlist-skipping-predictions/assets/deandro_plot.png")
+![Hierarchical Clustering Analysis](https://github.com/zwarshavsky/spotify-playlist-skipping-predictions/blob/master/assets/deandro_plot.png "Title")
+
+In red connecting line reveal 3 key features as possible contenders for our prediction target. 
+
+#### Feature Leaking
+
 
 
 
