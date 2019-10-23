@@ -91,6 +91,12 @@ our metrics appear much more realistic and generalized:
 
 ![Scores](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Score_2.png "Title")
 
+We run the robust Permutation Importance analysis on our remaining features and get the following:
+
+![Permutation Importance](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/perm_importance.png "Title")
+
+
+
 
 
 
