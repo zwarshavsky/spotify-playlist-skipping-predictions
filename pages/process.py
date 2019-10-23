@@ -45,17 +45,39 @@ Of the 3 binary classification targets, I ultimately chose "Skip-2" which is eve
 
 Spotify's "Skip-2" definition: "Boolean indicating if the track was only played briefly"
 
-**Goal:** to predict whether a user will briefly play a track within a playlist or if they will play the track in full.    
+**Goal:** to predict whether a user will briefly play a track or if they will play the track in full within a Spotify playlist.    
 
 
 #### Feature Leaking
 ***
-Feature leaking identification and detection can be a tedious process requiring trial and error, domain knowledge, and ultimately, a generalized robust Machine Learning model that has been cross-validated.
+Feature leaking identification and detection can be a tedious process requiring re-running ML models via sheer trial and error, domain knowledge, and ultimately, a generalized Machine Learning model that has been cross-validated.
 
+After preprocessing with [TargetEncoder](https://contrib.scikit-learn.org/categorical-encoding/targetencoder.html), Utilizing Scikitlearn's [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), I attained the following scores:
 
+![Scores](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Score_1.png "Title")
 
+An incredible improvement! 20% higher validation accuracy than the mean baseline. Too good to be true?
 
 ![Hierarchical Clustering Analysis](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Feature_Importances.png "Title")
+
+Let's examine the highest performing features:
+***
+hist_user_behavior_reason_start - E.g. _fwdbtn_ - the user action which led to the current track being played 
+hour_of_day - hour of the day playlist / track was played
+session_position - position of track within the playlist
+session_length - number of total rows in the session
+context_type - playlist type 
+***
+What is one important question you can ask to cross-check your thinking around feature selection?
+
+**would this feature be available prior to the event of the actual output from the prediction model?**
+
+Our Guidelines: 
+
+* Our goal is to predict whether a track will be played briefly or in full  
+
+
+
 
 
 
