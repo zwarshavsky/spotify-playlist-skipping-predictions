@@ -4,7 +4,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.graph_objs as go
-import pickle
+import matplotlib.pyplot as plt
+from plotly.tools import mpl_to_plotly
 
 from app import app
 
@@ -209,6 +210,12 @@ column1 = dbc.Col(
 
 column2 = dbc.Col(
     [
+#         matplotlib_figure = plt.figure()
+# x = [10,  8, 13,  9, 11, 14,  6,  4, 12,  7,  5]
+# y = [ 8,  6,  7,  8,  8,  9,  7,  4, 10,  4,  5]
+# plt.scatter(x, y)
+# plotly_figure = mpl_to_plotly(matplotlib_figure)
+# layout = dcc.Graph(id='my-graph-name', figure=plotly_figure)
         
     ]
 )
