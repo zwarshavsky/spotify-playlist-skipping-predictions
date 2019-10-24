@@ -95,11 +95,15 @@ We run the robust Permutation Importance analysis on our remaining features and 
 
 ![Permutation Importance](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/perm_importance.png "Title")
 
+This confirms our findings previously. Only a few additional features can be filtered out of our model. Accuracy score remains static.   
 
 
+####
 
+![PDP Interaction Plot](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/pdp_interaction.png "Title")
 
-
+This particular partial dependence plot reveals that the two most influential attributes on outcome, *release year* and *us popularity estimate*, 
+play a greater role in the prediction when a track lacks popularity and is contemporary.    
 
 
 
