@@ -124,8 +124,8 @@ def display_results(year,pop,beat,bounce,dance,range,energy,instrument,mechanism
     if c[0] == True:
         c = "The track will likely be skipped"
     else:
-        c = "Winning prediction: the track will be played in full"
-    return [f'Inputs: {year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo}', f'The Prediction: {c}',f'[shapley plot will go here]']
+        c = "The track will be played in full"
+    return [f'Inputs: {year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo}', f'{c}',f'[shapley plot will go here]']
    
     
 
