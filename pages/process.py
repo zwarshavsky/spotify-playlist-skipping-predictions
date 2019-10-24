@@ -107,10 +107,12 @@ play a greater role in the prediction when a track lacks popularity and is conte
 
 
 ![PDP Interaction Plot 2](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/pdp_interaction2.png "Title")
+
 The two features *speechiness* and *instrumentalness* refer to opposite qualities in the track. As you can see when a track is 100% instrumental, there is a much lower rate of speechiness, 
 a quality depicting spoken word elements. 
 
 
+![PDP Interaction Plot 2](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/shap_force.png)
 
 
 
