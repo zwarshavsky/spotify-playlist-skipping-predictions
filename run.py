@@ -4,10 +4,17 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import pandas as pd
+from joblib import load
+
+rf = load('assets/randomforest.joblib')
+xb = load('assets/xgboost.joblib')
 
 # Imports from this application
 from app import app, server
 from pages import index, predictions, insights, process
+
+
 
 """
 https://dash-bootstrap-components.opensource.faculty.ai/l/components/navbar
@@ -35,8 +42,8 @@ navbar = dbc.NavbarSimple(
     ],
     sticky='top',
     color='#2FBF62', 
-    light=False, 
-    dark=True
+    light=True, 
+    dark=False,
 )
 
 footer = dbc.Container(
@@ -87,8 +94,13 @@ def display_page(pathname):
 
 # Prediction Page Interactions
 @app.callback(
-    Output('output-message', 'children'),
-               [Input('year-drop','value'), 
+    [Output('test', 'children'),
+    Output('prediction-text', 'children'),
+    Output('shapley', 'children')],
+    [
+            #    [Input('model','value'),
+                Input('slider-0','value'), 
+               Input('slider-1', 'value'),
                Input('slider-2', 'value'),
                Input('slider-3', 'value'),
                Input('slider-4', 'value'),
@@ -99,19 +111,21 @@ def display_page(pathname):
                Input('slider-9', 'value'),
                Input('slider-10', 'value'),
                Input('slider-11', 'value'),
-               Input('slider-12', 'value'),
-               Input('slider-13', 'value'),
-               Input('slider-14', 'value'),
-               Input('slider-15', 'value'),
-               Input('slider-16', 'value'),
-               Input('slider-17', 'value'),
-               Input('model','value'),
+               
                ]) 
 
-#note to self: 
 
-def display_results(value0,value1,value2,value3,value4,value5,value6,value7,value8,value9,value10,value11,value12,value13,value14,value15,value16,value17):
-    return f'Testing use of drop-down interaction: {value0,value1,value2,value3,value4,value5,value6,value7,value8,value9,value10,value11,value12,value13,value14,value15,value16,value17}'
+def display_results(year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo):
+    df = pd.DataFrame(columns=['release_year', 'us_popularity_estimate', 'beat_strength', 'bounciness',
+       'danceability', 'dyn_range_mean', 'energy', 'instrumentalness',
+       'mechanism', 'organism', 'speechiness', 'tempo'],data=[[year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo]])
+    # b = df.head()
+    c = rf.predict(df)
+    if c[0] == True:
+        c = "The track will likely be skipped"
+    else:
+        c = "Winning prediction: the track will be played in full"
+    return [f'Inputs: {year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo}', f'The Prediction: {c}',f'[shapley plot will go here]']
    
     
 
