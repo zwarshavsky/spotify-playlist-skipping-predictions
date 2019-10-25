@@ -203,7 +203,6 @@ column3 = dbc.Col(
 
             Attribute Definitions:
 
-            * **Year of Release** - Year the track was released 
             * **US Popularity Level** - Highest point on Billboard  
             * **Beat Strength** - The energy level at beat intervals
             * **Bounciness** - Length of decay of initial beat
@@ -215,7 +214,7 @@ column3 = dbc.Col(
             * **Organism** - Organism is how human a track sounds, using a live drummer rather than a drum machine for example.
             * **Speechiness** - Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. 
             * **Tempo** - The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration. 
-
+            * **Year of Release** - Year the track was released 
 
 
 
