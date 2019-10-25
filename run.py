@@ -141,7 +141,7 @@ def display_results(year,pop,beat,bounce,dance,range,energy,instrument,mechanism
        'danceability', 'dyn_range_mean', 'energy', 'instrumentalness',
        'mechanism', 'organism', 'speechiness', 'tempo'],data=[[year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo]])
 
-    positive_class = 'False'
+    positive_class = 'True'
     positive_class_index = 1
     
     
@@ -154,7 +154,7 @@ def display_results(year,pop,beat,bounce,dance,range,energy,instrument,mechanism
     pred = shap.predict(row_processed)[0]
     pred_proba = shap.predict_proba(row_processed)[0, positive_class_index]
     pred_proba *= 100
-    if pred != positive_class:
+    if pred == positive_class:
         pred_proba = 100 - pred_proba
     
 # Show predictiion & probability
