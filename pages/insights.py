@@ -11,7 +11,7 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
 
-### The Realistic Model
+### The Final Model
 
 The final model consists **ONLY** of attributes that could have been collected about the data prior to the playback event. 
 
@@ -43,17 +43,19 @@ a quality depicting spoken word elements.
 
 
     """
-        ),
+     ),
 # html.Img(src='https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/shap_force.png'  style={'height': '50%','width': '50%'})    
                 # ),
-html.Div([
+html.Div(
+    
+    [
         html.Img(
             src='https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/shap_force.png',
             style={
-                'height': '250%',
-                'width': '250%'
+                'height': '200%',
+                'width': '200%'
             })
-], style={'textAlign': 'center'}),
+]),
 dcc.Markdown(
     """
             Utilizing mean values for all features, we have generated a generalized Shap Force Plot. 
@@ -72,10 +74,4 @@ dcc.Link(dbc.Button('Make a Prediction', color='success'), href='/predictions')
 )
 
 
-column2 = dbc.Col(
-    [
-        
-    ]
-)
-
-layout = dbc.Row([column1, column2])
+layout = dbc.Row([column1])

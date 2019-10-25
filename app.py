@@ -15,7 +15,8 @@ pre-compiled theme. Bootswatch is a great place to find new themes. Links to
 CDNs for each of the Bootswatch styles are also included , and can be used 
 with the external_stylesheets argument of the Dash constructor:
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CERULEAN])
+# app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CERULEAN])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.GRID])
 
 Go to https://bootswatch.com/ to preview these Bootswatch themes:
 

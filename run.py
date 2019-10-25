@@ -34,17 +34,18 @@ dark (boolean, optional): Applies the `navbar-dark` class to the NavbarSimple, c
 light (boolean, optional): Applies the `navbar-light` class to the NavbarSimple, causing text in the children of the Navbar to use dark colors for contrast / visibility.
 sticky (string, optional): Stick the navbar to the top or the bottom of the viewport, options: top, bottom. With `sticky`, the navbar remains in the viewport when you scroll. By contrast, with `fixed`, the navbar will remain at the top or bottom of the page.
 """
+# style={'fontSize': 20, 'fontStyle': 'italic', 'paddingLeft':60}
 
 navbar = dbc.NavbarSimple(
-    brand='Machine Learning for Spotify Playlist Predictions',
+    brand='Spotify Playlist Predictions',
     brand_href='/', 
     children=[
-        dbc.NavItem(dcc.Link('Predictions', href='/predictions', className='nav-link')), 
-        dbc.NavItem(dcc.Link('Insights', href='/insights', className='nav-link')), 
-        dbc.NavItem(dcc.Link('Process', href='/process', className='nav-link')), 
+        dbc.NavItem(dcc.Link('Predictions', href='/predictions', className='nav-link',style={'fontSize': 16})), 
+        dbc.NavItem(dcc.Link('Insights', href='/insights', className='nav-link',style={'fontSize': 16})), 
+        dbc.NavItem(dcc.Link('Process', href='/process', className='nav-link',style={'fontSize': 16})), 
     ],
-    sticky='top',
-    color='#2FBF62', 
+    # sticky='top',
+    color='#2FBF62',
     light=True, 
     dark=False,
 )
