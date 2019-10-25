@@ -9,7 +9,7 @@ from app import app
 column1 = dbc.Col(
     [
         dcc.Markdown(
-            """
+            '''
 
 ### The Final Model
 
@@ -42,7 +42,7 @@ a quality depicting spoken word elements.
 
 
 
-    """
+    '''
      ),
 # html.Img(src='https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/shap_force.png'  style={'height': '50%','width': '50%'})    
                 # ),
@@ -57,14 +57,14 @@ html.Div(
             })
 ]),
 dcc.Markdown(
-    """
+    '''
             Utilizing mean values for all features, we have generated a generalized Shap Force Plot. 
             In this example, we can see that US Popularity and Release Year played the most significant role in increasing the probability of the track not being skipped. 
             On the other hand, the instrumentalness feature pushes reduces the probability that the track will be played in full. In this instance, it is a low score for instrumentalness 
             that results in this push backward. 
             
             See this model in action on the prediction section!
- """
+ '''
 
 ),
 dcc.Link(dbc.Button('Make a Prediction', color='success'), href='/predictions')
