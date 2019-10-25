@@ -19,6 +19,7 @@ joblib = "==0.13.2"
 scikit-learn = "==0.21.2"
 category-encoders = "==2.1.0"
 xgboost = "*"
+shap = "*"
 
 [requires]
 python_version = "3"

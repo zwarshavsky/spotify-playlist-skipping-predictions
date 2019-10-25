@@ -69,7 +69,7 @@ Let's examine the highest performing features:
 
 What is one important question you can ask to cross-check your thinking around feature selection?
 
-**would this feature be available prior to the event of the actual output from the prediction model?**
+**Would this feature be available prior to the event of the actual output from the prediction model?**
 
 Our Guidelines: 
 
@@ -81,62 +81,6 @@ Conclusion:
 
 * The highest performing features were extracted during or after playback
 * These features should be dropped from the dataset 
-
-
-***
-
-### A Realistic Model
-
-Our model now consists **ONLY** of track attributes outside of any user behavior. Ultimately, this is an unrealistic model for real-life prediction, but having removed, all of these variables, 
-our metrics appear much more realistic and generalized:
-
-![Scores](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Score_2.png "Title")
-
-We run the robust Permutation Importance analysis on our remaining features and get the following:
-
-![Permutation Importance](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/perm_importance.png "Title")
-
-This confirms our findings previously. Only a few additional features can be filtered out of our model. Accuracy score remains static.   
-
-
-####
-
-![PDP Interaction Plot](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/pdp_interaction.png "Title")
-
-This particular partial dependence plot reveals that the two most influential attributes on outcome, *release year* and *us popularity estimate*, 
-play a greater role in the prediction when a track lacks popularity and is contemporary.    
-
-
-![PDP Interaction Plot 2](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/pdp_interaction2.png "Title")
-
-The two features *speechiness* and *instrumentalness* refer to opposite qualities in the track. As you can see when a track is 100% instrumental, there is a much lower rate of speechiness, 
-a quality depicting spoken word elements.  
-
-
-<br />
-<br />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### The Infamous Shap Force Plot
-![PDP Interaction Plot 2](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/shap_force.png)
 
 
 

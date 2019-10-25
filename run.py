@@ -9,6 +9,9 @@ from joblib import load
 
 rf = load('assets/randomforest.joblib')
 xb = load('assets/xgboost.joblib')
+shap = load('assets/shapmodel.joblib')
+processor = load('assets/processor.joblib')
+explainer = load('assets/explainer.joblib')
 
 # Imports from this application
 from app import app, server
@@ -94,9 +97,15 @@ def display_page(pathname):
 
 # Prediction Page Interactions
 @app.callback(
-    [Output('test', 'children'),
-    Output('prediction-text', 'children'),
-    Output('shapley', 'children')],
+    [
+    # [Output('test', 'children'),
+    Output('prediction-text1', 'children'),
+    Output('prediction-text2', 'children'),
+    Output('prediction-text3', 'children'),
+    Output('prediction-text4', 'children'),
+    Output('prediction-text5', 'children'),
+    Output('prediction-text6', 'children'),
+    Output('prediction-text7', 'children')],
     [
             #    [Input('model','value'),
                 Input('slider-0','value'), 
@@ -115,17 +124,69 @@ def display_page(pathname):
                ]) 
 
 
+# def display_results(year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo):
+#     df = pd.DataFrame(columns=['release_year', 'us_popularity_estimate', 'beat_strength', 'bounciness',
+#        'danceability', 'dyn_range_mean', 'energy', 'instrumentalness',
+#        'mechanism', 'organism', 'speechiness', 'tempo'],data=[[year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo]])
+#     # b = df.head()
+#     c = rf.predict(df)
+#     if c[0] == True:
+#         c = "The track will likely be skipped"
+#     else:
+#         c = "The track will be played in full"
+#     return [f'Inputs: {year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo}', f'{c}',f'[shapley plot will go here]']
+
 def display_results(year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo):
     df = pd.DataFrame(columns=['release_year', 'us_popularity_estimate', 'beat_strength', 'bounciness',
        'danceability', 'dyn_range_mean', 'energy', 'instrumentalness',
        'mechanism', 'organism', 'speechiness', 'tempo'],data=[[year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo]])
-    # b = df.head()
-    c = rf.predict(df)
-    if c[0] == True:
-        c = "The track will likely be skipped"
-    else:
-        c = "The track will be played in full"
-    return [f'Inputs: {year,pop,beat,bounce,dance,range,energy,instrument,mechanism,organism,speechiness,tempo}', f'{c}',f'[shapley plot will go here]']
+
+    positive_class = 'False'
+    positive_class_index = 1
+    
+    
+#     # Get & process the data for the row
+    row = df
+    row_processed = processor.transform(row)
+    print(row_processed)
+    
+    # Make predictions (includes predicted probability)
+    pred = shap.predict(row_processed)[0]
+    pred_proba = shap.predict_proba(row_processed)[0, positive_class_index]
+    pred_proba *= 100
+    if pred != positive_class:
+        pred_proba = 100 - pred_proba
+    
+# Show predictiion & probability
+    a = f'The model predicts that this track was only partially played is {pred}, with {pred_proba:.0f}% probability.'
+    
+    # Get shapley additive explanations
+    shap_values = explainer.shap_values(row_processed)
+    
+    # Get top 3 "pros & cons"
+    feature_names = row.columns
+    feature_values = row.values[0]
+    shaps = pd.Series(shap_values[0], zip(feature_names, feature_values))
+    pros = shaps.sort_values(ascending=False)[:3].index
+    cons = shaps.sort_values(ascending=True)[:3].index
+    
+    # Show top 3 reasons for prediction
+#     print('\n')
+    b = 'Top 3 reasons for prediction:'
+    evidence = pros if pred == positive_class else cons
+    c = []
+    for i, info in enumerate(evidence, start=1):
+        feature_name, feature_value = info
+        c.append(f'{i}. {feature_name} is {feature_value}.')
+    
+    # Show top 1 counter-argument against prediction
+#     print('\n')
+    d = 'Top counter-argument against prediction:'
+    evidence = cons if pred == positive_class else pros
+    feature_name, feature_value = evidence[0]
+    e = f'- {feature_name} is {feature_value}.'
+    return [a,b,c[0],c[1],c[2],d,e]
+
    
     
 

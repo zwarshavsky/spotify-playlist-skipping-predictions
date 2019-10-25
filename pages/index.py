@@ -25,11 +25,29 @@ the content.
 """
 
 column1 = dbc.Col(
-    [
+    [   
+        # dcc.Markdown(
+        #     """
+        
+        #     ## Predicting The Perfect Playlist Recipe 
+
+
+        #     """
+        # ),
+        html.Br(),
+        html.Br(),
+        html.Div('Without music,',style={'fontSize': 20, 'fontStyle': 'italic', 'paddingLeft':60}),
+        html.Div('life would be a mistake.',style={'fontSize': 20, 'fontStyle': 'italic','paddingLeft':60}),
+        html.Br(),
+        html.Div('- Friedrich Nietzsche',style={'fontSize': 16,'paddingLeft':120}),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        
+        html.Br(),
         dcc.Markdown(
             """
-        
-            ## The Perfect Playlist   
+    
 
             By emphasizing the most definitive features of a track in Spotify's massive collection of playlists, we can learn what makes a Spotify playlist stand out.   
 
@@ -37,7 +55,12 @@ column1 = dbc.Col(
 
             """
         ),
-        dcc.Link(dbc.Button('Make a Prediction', color='success'), href='/predictions')
+        html.Br(),
+        dcc.Link(dbc.Button('Make a Prediction', color='success'), href='/predictions'), 
+        html.Br(),
+        html.Br(),
+        html.Br(),
+
     ],
     md=4,
 )
@@ -51,9 +74,9 @@ column2 = dbc.Col(
         # dcc.Graph(figure=fig),
         dcc.Markdown('''
 
-        ![Scores](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Score_1.png "Title")
+        ![Scores](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Homepage.png "Feature Dendrogram")
         '''
-        
+
         ),
     ]
 )

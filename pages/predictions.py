@@ -26,18 +26,8 @@ column1 = dbc.Col(
         #     # value=5,
         #     options=[{'label': i, 'value' : i} for i in ['Random Forest','XG Boost']],  
         # ),
-        html.Div(id='test',children='output will go here'), 
-        html.Br(),
-         html.H6('Year of Release'),
-        dcc.Slider(
-            id='slider-0',
-            min=1960,
-            max=2020,
-            step=1,
-            value = 92,
-            marks={i:str(i) for i in range(1960,2021,10)},
-            
-        ),
+        # html.Div(id='test',children='output will go here'), 
+        # html.Br(),
         # html.H6('Year of Release'),
         # dcc.Dropdown(
         #     id='year-drop',
@@ -156,8 +146,20 @@ column1 = dbc.Col(
             marks={i:str(i) for i in range(60,241,20)},
             
         ),
-    
         html.Br(),
+        html.Br(),
+        html.H6('Year of Release'),
+        dcc.Slider(
+            id='slider-0',
+            min=1960,
+            max=2020,
+            step=1,
+            value = 1990,
+            marks={i:str(i) for i in range(1960,2021,10)},
+            
+        ),
+    
+        
         html.Br(),
         html.Br(),
         html.Br(),
@@ -174,9 +176,17 @@ column1 = dbc.Col(
 
 
 column2 = dbc.Col(
-    [
-        html.Div(id='prediction-text',children='output will go here',style={'color': 'green', 'fontSize': 20}), 
-        html.Div(id='shapley',children='output will go here'),
+    [   html.Br(),
+        html.Div(id='prediction-text1',children='output will go here',style={'color': 'green', 'fontSize': 16}), 
+        html.Br(), 
+        html.Div(id='prediction-text2',children='output will go here',style={'fontSize': 16}),
+        html.Br(),  
+        html.Div(id='prediction-text3',children='output will go here',style={'color': 'green', 'fontSize': 16}),
+        html.Div(id='prediction-text4',children='output will go here',style={'color': 'green', 'fontSize': 16}), 
+        html.Div(id='prediction-text5',children='output will go here',style={'color': 'green', 'fontSize': 16}), 
+        html.Br(), 
+        html.Div(id='prediction-text6',children='output will go here',style={'fontSize': 16}), 
+        html.Div(id='prediction-text7',children='output will go here',style={'color': 'green', 'fontSize': 16}), 
         
     ],
     md=3,
