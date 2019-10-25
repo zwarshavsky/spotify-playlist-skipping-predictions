@@ -11,8 +11,7 @@ column1 = dbc.Col(
     [
        dcc.Markdown('''
 ## Back from the Feature 
-***
-***
+
 
 As a DJ, sound system nerd, and musician I've spent more 
 time arguing, postulating, and sharing unqualified opinions about my favorite (and least favorite)
@@ -25,7 +24,7 @@ Resources for Spotify's [Sequential Skip Prediction Challenge](https://www.aicro
 user interaction data recorded between July 2018 and September 2018 and an additional track list with feature attributes for 1.8 million songs.
 
 My sample is from July 15, 2018. After cross-referencing with the features list, I was left with a total of 1.5 million rows and 50 features.
-***
+
 
 ### Feature Selection Process 
 
@@ -47,9 +46,9 @@ Spotify's "Skip-2" definition: "Boolean indicating if the track was only played 
 
 **Goal:** to predict whether a user will briefly play a track or if they will play the track in full within a Spotify playlist.    
 
-
-#### Feature Leaking
 ***
+#### Feature Leaking
+
 Feature leaking identification and detection can be a tedious process requiring re-running ML models via sheer trial and error, domain knowledge, and ultimately, a generalized Machine Learning model that has been cross-validated.
 
 After preprocessing with [TargetEncoder](https://contrib.scikit-learn.org/categorical-encoding/targetencoder.html), Utilizing Scikitlearn's [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), I attained the following scores:
@@ -61,13 +60,13 @@ An incredible improvement! 20% higher validation accuracy than the mean baseline
 ![Hierarchical Clustering Analysis](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Feature_Importances.png "Title")
 
 Let's examine the highest performing features:
-***
+
 * hist_user_behavior_reason_start - E.g. _fwdbtn_ - the user action which led to the current track being played 
 * hour_of_day - hour of the day playlist / track was played
 * session_position - position of track within the playlist
 * session_length - number of total rows in the session
 * context_type - playlist type 
-***
+
 What is one important question you can ask to cross-check your thinking around feature selection?
 
 **would this feature be available prior to the event of the actual output from the prediction model?**
@@ -84,7 +83,9 @@ Conclusion:
 * These features should be dropped from the dataset 
 
 
-### Realistic Model
+***
+
+### A Realistic Model
 
 Our model now consists **ONLY** of track attributes outside of any user behavior. Ultimately, this is an unrealistic model for real-life prediction, but having removed, all of these variables, 
 our metrics appear much more realistic and generalized:
@@ -109,10 +110,34 @@ play a greater role in the prediction when a track lacks popularity and is conte
 ![PDP Interaction Plot 2](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/pdp_interaction2.png "Title")
 
 The two features *speechiness* and *instrumentalness* refer to opposite qualities in the track. As you can see when a track is 100% instrumental, there is a much lower rate of speechiness, 
-a quality depicting spoken word elements. 
+a quality depicting spoken word elements.  
 
 
+<br />
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### The Infamous Shap Force Plot
 ![PDP Interaction Plot 2](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/shap_force.png)
+
 
 
 

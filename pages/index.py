@@ -48,7 +48,13 @@ fig = px.scatter(gapminder.query("year==2007"), x="gdpPercap", y="lifeExp", size
 
 column2 = dbc.Col(
     [
-        dcc.Graph(figure=fig),
+        # dcc.Graph(figure=fig),
+        dcc.Markdown('''
+
+        ![Scores](https://raw.githubusercontent.com/zwarshavsky/spotify-playlist-skipping-predictions/master/assets/Score_1.png "Title")
+        '''
+        
+        ),
     ]
 )
 
