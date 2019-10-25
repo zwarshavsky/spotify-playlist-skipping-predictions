@@ -149,7 +149,7 @@ def display_results(year,pop,beat,bounce,dance,range,energy,instrument,mechanism
 #     # Get & process the data for the row
     row = df
     row_processed = processor.transform(row)
-    print(row_processed)
+    # print(row_processed)
     
     # Make predictions (includes predicted probability)
     pred = shap.predict(row_processed)[0]
